@@ -36,24 +36,18 @@
     <table class="table table-stripped table-hover">
         <thead>
             <tr>
-                <?php for($k=0; $k<=$ch1; $k++): ?>
-                    <?php if($k == 0): ?>
-                        <th>#</th>
-                    <?php else: ?>
-                        <th><?php echo $k; ?></th>
-                    <?php endif; ?>
+                <th>#</th>
+                <?php for($k=1; $k<=$ch1; $k++): ?>
+                    <th><?php echo $k; ?></th>
                 <?php endfor; ?>
             </tr>
         </thead>
         <tbody>
             <?php for($j=1; $j<=$ch2; $j++): ?>
                 <tr>
-                    <?php for($i=0; $i<=$ch1; $i++): ?>
-                        <?php if(($j*$i) == 0): ?>
-                            <th><?php echo ($j); ?></th>
-                        <?php else: ?>
+                    <th><?php echo ($j); ?></th>
+                    <?php for($i=1; $i<=$ch1; $i++): ?>
                             <td><?php echo ($j*$i); ?></td>
-                        <?php endif; ?>
                     <?php endfor; ?>
                 </tr>
             <?php endfor; ?>
