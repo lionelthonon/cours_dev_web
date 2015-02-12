@@ -17,6 +17,14 @@ try {
     die('Err.1 : '.$e->getMessage());
 }
 
+// --- Liste des messages --- //
+// Crée le message
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $signature = $_POST['signature'];
+    $body = $_POST['body'];
+    createMessage($connexion, $signature, $body);
+}
+
 $messages = getMessages($connexion); // Récupérer les messages -> Il faut passer la variable de la connexion
 
 // -- Includes -- //

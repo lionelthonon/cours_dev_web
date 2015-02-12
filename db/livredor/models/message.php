@@ -6,3 +6,8 @@ function getMessages($dbConnexion) {
     $res = $dbConnexion->query($sql); // Résultat de la requête -> Voir PDO::query
     return $res->fetchAll();
 }
+
+// Ajouter un message dans la BDD
+function createMessage($dbConnexion, $signature, $body){
+    $sql = 'INSERT INTO messages (signature, body) VALUES ()';
+}
