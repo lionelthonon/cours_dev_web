@@ -9,5 +9,14 @@ function getMessages($dbConnexion) {
 
 // Ajouter un message dans la BDD
 function createMessage($dbConnexion, $signature, $body){
-    $sql = 'INSERT INTO messages (signature, body) VALUES ()';
+    // Préparer la requête : "gabarit" de la requete avec les jokers
+    $sql = 'INSERT INTO messages (signature, body) VALUES (:signature, :body)';
+    try {
+        // Exécuter la requête
+        $res = $dbConnexion->prepare($sql);
+        $res->execute([':signature'=>$signature, ':body'=>$body]);
+
+    }catch(PDOException $e){
+        die($e->getMessage());
+    }
 }
