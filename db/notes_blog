@@ -1,0 +1,5 @@
+Blog
+-------
+Créer des catégories via une nouvelle table dans la base de données
+    -> Afficher les catégories sur chaque post
+    -> Afficher les posts en fonction d'une catégorie
