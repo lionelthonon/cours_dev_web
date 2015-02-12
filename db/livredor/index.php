@@ -1,13 +1,18 @@
 <?php
+/* --- INCLUDES --- */
+include('models/message.php');
+include('configs/db.php');
 
 // --- connexion BDD --- //
-$connexion = new PDO(); // Creation de la variable de connexion
+// Creation de la variable de connexion -- PDO::__construct
+try {
+    $connexion = new PDO(DSN, USER, PSSWD); // new PDO('connexion', 'user', 'motdepasse') -> configd/db.php
+}catch(PDOException $e){ // Stock l'erreur dans $e
+    // Gestion de l'erreur -- affichage de l'erreur
+    die('Err.1 : '.$e->getMessage());
+}
 
-
-$messages = [
-    ['signature' => 'salut', 'date' => 'Aujourd\'hui', 'body' => 'Mon message'],
-    ['signature' => 'salut', 'date' => 'Aujourd\'hui', 'body' => 'Mon message']
-];
+$messages = getMessages($connexion); // Récupérer les messages -> Il faut passer la variable de la connexion
 
 // -- Includes -- //
 include('views/golden.php');
