@@ -20,13 +20,15 @@
     <!-- Affiche les messages -->
     <div class="messages">
         <?php foreach($messages as $message): ?>
-            <div class="message">
+            <div class="message panel panel-default">
                 <header class="message__header">
-                    <p>
-                        <?php echo $message['signature']; ?> -
-                        <small><?php echo $message['date']; ?></small>
-                        <p><?php echo $message['body']; ?></p><br />
+                    <p class="panel-heading">
+                            <?php echo $message['signature']; ?> -
+                            <?php echo utf8_encode(strftime('%A %d %B %Y a %H h %M',strtotime($message['date']))); ?>
                     </p>
+                    <p class="panel-body">
+                        <?php echo $message['body']; ?>
+                    </p><br />
                 </header>
                 <div class="message__body">
 
@@ -36,6 +38,7 @@
     </div>
 
     <!-- formulaire -->
+    <hr />
     <section>
         <h2>Dites ce que vous en pensez !</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
@@ -58,7 +61,7 @@
 </main>
 
 <footer>
-    
+    <div class="text-center">Pas touche, c'est à moi</div>
 </footer>
 </body>
 </html>

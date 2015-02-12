@@ -3,6 +3,8 @@
 include('models/message.php');
 include('configs/db.php');
 
+setlocale(LC_TIME, 'fr');
+
 // --- connexion BDD --- //
 // Creation de la variable de connexion -- PDO::__construct
 try {
