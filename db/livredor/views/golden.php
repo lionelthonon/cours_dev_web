@@ -10,12 +10,13 @@
 
 <header>
     <div class="branding">
-        <p>La fabrique de pruneaux</p>
+        <p>Livre d'or des pruneaux</p>
     </div>
 </header>
 
 <main>
     <h1>Vos messages</h1>
+    <!-- Affiche les messages -->
     <div class="messages">
         <?php foreach($messages as $message): ?>
             <div class="message">
@@ -32,6 +33,24 @@
             </div>
         <?php endforeach; ?>
     </div>
+
+    <!-- formulaire -->
+    <section>
+        <h2>Dites ce que vous en pensez !</h2>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <div>
+                <label for="signature">Votre signature</label>
+                <input type="text" name="signature" id="signature" cols="30" rows="10"></textarea>
+            </div>
+
+            <div>
+                <label for="body">Votre message</label>
+                <textarea name="body" id="body" cols="30" rows="10"></textarea>
+            </div>
+
+            <button type="submit">Valider</button>
+        </form>
+    </section>
 </main>
 
 <footer>

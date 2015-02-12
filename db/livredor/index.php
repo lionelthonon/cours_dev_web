@@ -7,6 +7,11 @@ include('configs/db.php');
 // Creation de la variable de connexion -- PDO::__construct
 try {
     $connexion = new PDO(DSN, USER, PSSWD); // new PDO('connexion', 'user', 'motdepasse') -> configd/db.php
+
+    // corriger l'encodage
+    $connexion->query('SET CHARACTER SET UTF8');
+    $connexion->query('SET NAMES UTF8');
+
 }catch(PDOException $e){ // Stock l'erreur dans $e
     // Gestion de l'erreur -- affichage de l'erreur
     die('Err.1 : '.$e->getMessage());
