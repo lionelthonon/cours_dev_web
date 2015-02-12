@@ -3,3 +3,11 @@ Blog
 Créer des catégories via une nouvelle table dans la base de données
     -> Afficher les catégories sur chaque post
     -> Afficher les posts en fonction d'une catégorie
+    
+    ->  SELECT messages.id
+        AS message_id, signature, body, date, category_id, categories.id AS cat_id, nom
+        FROM messages
+        JOIN categories ON categories.id = messages.category_id
+        
+        -> ATTENTION AU PRODUIT CARTESIEN
+        
