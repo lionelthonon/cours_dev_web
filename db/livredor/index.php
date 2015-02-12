@@ -1,7 +1,8 @@
 <?php
 
-// --- onnexion BDD --- //
-$connexion = new PDO();
+// --- connexion BDD --- //
+$connexion = new PDO(); // Creation de la variable de connexion
+
 
 $messages = [
     ['signature' => 'salut', 'date' => 'Aujourd\'hui', 'body' => 'Mon message'],
