@@ -41,12 +41,15 @@
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <div class="form-group <?php echo isset($errors['signature'])?'has-error':''; ?>">
                 <label class="control-label" for="signature">Votre signature</label>
-                <input class="form-control" type="text" name="signature" id="signature" cols="30" rows="10"></textarea>
+                <input class="form-control" type="text" name="signature" id="signature" cols="30" rows="10"
+                value="<?php echo isset($signature)?$signature:''; ?>"></textarea>
             </div>
 
             <div class="form-group <?php echo isset($errors['signature'])?'has-error':''; ?>">
                 <label class="control-label" for="body">Votre message</label>
-                <textarea class="form-control" name="body" id="body" cols="30" rows="10"></textarea>
+                <textarea class="form-control" name="body" id="body" cols="30" rows="10"
+                    value="<?php echo isset($signature)?$signature:''; ?>"
+                ></textarea>
             </div>
 
             <button class="btn btn-default" type="submit">Valider</button>

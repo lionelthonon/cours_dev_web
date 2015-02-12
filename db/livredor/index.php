@@ -22,6 +22,9 @@ try {
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // Gestion form vide
     $errors = [];
+    $signature = $_POST['signature'];
+    $body = $_POST['body'];
+
     if(empty($_POST['signature'])){
         $errors['signature'] = true;
     }
@@ -31,8 +34,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 
     if(count($errors) === 0) {
-        $signature = $_POST['signature'];
-        $body = $_POST['body'];
         createMessage($connexion, $signature, $body);
     }
 }
