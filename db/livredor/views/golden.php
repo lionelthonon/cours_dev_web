@@ -23,6 +23,7 @@
                     <p>
                         <?php echo $message['signature']; ?> -
                         <?php echo $message['date']; ?>
+                        <p><?php echo $message['body']; ?></p>
                     </p>
                 </header>
                 <div class="message__body">
