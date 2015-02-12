@@ -23,11 +23,11 @@
                     <p>
                         <?php echo $message['signature']; ?> -
                         <?php echo $message['date']; ?>
-                        <p><?php echo $message['body']; ?></p>
+                        <p><?php echo $message['body']; ?></p><br />
                     </p>
                 </header>
                 <div class="message__body">
-                    
+
                 </div>
             </div>
         <?php endforeach; ?>
