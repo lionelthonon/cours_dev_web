@@ -20,9 +20,21 @@ try {
 // --- Liste des messages --- //
 // Crée le message
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $signature = $_POST['signature'];
-    $body = $_POST['body'];
-    createMessage($connexion, $signature, $body);
+    // Gestion form vide
+    $errors = [];
+    if(empty($_POST['signature'])){
+        $errors['signature'] = true;
+    }
+
+    if(empty($_POST['body'])){
+        $errors['body'] = true;
+    }
+
+    if(count($errors) === 0) {
+        $signature = $_POST['signature'];
+        $body = $_POST['body'];
+        createMessage($connexion, $signature, $body);
+    }
 }
 
 $messages = getMessages($connexion); // Récupérer les messages -> Il faut passer la variable de la connexion
