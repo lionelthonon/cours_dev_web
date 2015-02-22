@@ -46,6 +46,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	}
 }
 
+/* --- Supprimer un post ---*/
+if(isset($_GET['delete'])){
+	var_dump(isset($_POST['post_to_delete']));
+};
+
 /* --- Affiche les messages --- */
 $posts = getPosts($connexion);
 

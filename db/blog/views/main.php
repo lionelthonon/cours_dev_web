@@ -26,6 +26,12 @@
 							<p><?php echo $post['content']; ?></p>
 							<small><em><?php echo $post['name']; ?></em></small>
 						</div>
+						<div class="panel-footer">
+							<a href="?delete">Supprimer ce post</a>
+							<form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
+								<input type="hidden" name="post_to_delete" value="<?php echo $post['id']; ?>">
+							</form>
+						</div>
 					</div>
 				<?php endforeach; ?>
 			</div><!-- posts -->

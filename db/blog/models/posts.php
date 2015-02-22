@@ -3,7 +3,7 @@
 function getPosts($dbConnexion){
 
 	// Stocker la requête SQL
-	$sql = 'SELECT author_sign, content, date, name
+	$sql = 'SELECT posts.id, author_sign, content, date, name
 			FROM posts, categories
 			WHERE posts.id_cat LIKE categories.id
 			ORDER BY date';
