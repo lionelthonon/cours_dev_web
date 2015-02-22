@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Mini blog en PHP</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="views/css/style.css">
 </head>
 <body>
 	<header>
@@ -13,9 +13,11 @@
 		<main>
 			<div class="posts">
 				<?php foreach($posts as $post): ?>
-					<div class="panel panel-default">
+					<div class="panel panel-primary">
 						<div class="panel-heading">
-							<?php echo 'Posté par <em>'.$post['author_sign']."</em> le ".$post['date']; ?>
+							<!-- Format de la date : MANUAL strftime() -->
+							<?php $date = utf8_encode(strftime('%d %B %Y', strtotime($post['date']))); ?>
+							<?php echo 'Posté par <em>'.$post['author_sign']."</em> le ".$date; ?>
 						</div>
 						<div class="panel-body">
 							<?php echo $post['content']; ?>
