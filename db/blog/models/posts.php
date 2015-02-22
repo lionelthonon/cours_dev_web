@@ -3,7 +3,10 @@
 function getPosts($dbConnexion){
 
 	// Stocker la requête SQL
-	$sql = 'SELECT * FROM posts ORDER BY date';
+	$sql = 'SELECT author_sign, content, date, name
+			FROM posts, categories
+			WHERE posts.id_cat LIKE categories.id
+			ORDER BY date';
 
 	// PDO::query -- Resultat de la requête
 	$res = $dbConnexion->query($sql);
