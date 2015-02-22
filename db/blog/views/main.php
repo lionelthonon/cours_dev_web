@@ -23,7 +23,8 @@
 							<?php echo 'Posté par <em>'.$post['author_sign']."</em> le ".$date.' à '.$hour; ?>
 						</div>
 						<div class="panel-body">
-							<?php echo $post['content']; ?>
+							<p><?php echo $post['content']; ?></p>
+							<small><em><?php echo $post['name']; ?></em></small>
 						</div>
 					</div>
 				<?php endforeach; ?>
@@ -53,7 +54,7 @@
 							<label class="control-label col-sm-2" for="category">Choisissez La catégorie de votre article</label>
 							<div class="col-sm-10">
 								<select class="form-control" name="category" id="category">
-									<option value="0" selected="selected">Pas de catégorie</option>
+									<option value="NULL" selected="selected">Pas de catégorie</option>
 									<option value="1">Musique</option>
 									<option value="2">Cinéma</option>
 									<option value="3">Internet</option>

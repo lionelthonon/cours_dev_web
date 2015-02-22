@@ -14,7 +14,20 @@ function getPosts($dbConnexion){
 }
 
 /* --- AJOUTE UN POST --- */
-function createPost() {
+function createPost($connexion, $author_sign, $content, $category) {
+	// Prépare la requête avec les jokers
+	$sql = 'INSERT INTO posts (content, author_sign, id_cat)
+			VALUES (:content, :author_sign, :category)';
 
-
+	// Execute la requete
+	try {
+		$res = $connexion->prepare($sql);
+		$res->execute([
+			':author_sign' => $author_sign,
+			':content' => $content,
+			':category' => $category
+		]);
+	}catch(PDOException $e){ // S'il y a une erreur, la place dans $e
+		die($e->getMessage());
+	}
 }

@@ -37,9 +37,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	if(empty($_POST['content'])){
 		$errors['content'] = true;
 	}
-	if(empty($_POST['category'])){
-		$errors['category'] = true;
-	}
 
 	// Lance la fonction createPost() si il n'y a pas d'erreur
 	if(count($errors) === 0){
