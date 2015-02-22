@@ -19,8 +19,7 @@ try {
     die('Err.1 : '.$e->getMessage());
 }
 
-// --- Liste des messages --- //
-// Crée le message
+// --- Ajouter un message --- //
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // Gestion form vide
     $errors = [];
@@ -39,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         createMessage($connexion, $signature, $body);
     }
 }
-
+// --- Liste des messages --- //
 $messages = getMessages($connexion); // Récupérer les messages -> Il faut passer la variable de la connexion
 
 // -- Includes -- //

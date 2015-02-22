@@ -12,3 +12,9 @@ function getPosts($dbConnexion){
 	$res = $dbConnexion->query($sql);
 	return $res->fetchAll();
 }
+
+/* --- AJOUTE UN POST --- */
+function createPost() {
+
+
+}
