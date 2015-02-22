@@ -31,3 +31,20 @@ function createPost($connexion, $author_sign, $content, $category) {
 		die($e->getMessage());
 	}
 }
+
+/* --- SUPPRIME UN POST --- */
+function deletePost($connexion, $id_to_delete) {
+	// Prépare la requête avec les jokers
+	$sql = 'DELETE FROM posts
+			WHERE posts.id = :id';
+
+	// Execute la requête
+	try {
+		$res = $connexion->prepare($sql);
+		$res->execute([
+			':id' => $id_to_delete
+		]);
+	}catch(PDOException $e){
+		die($e->getMessage());
+	}
+}
