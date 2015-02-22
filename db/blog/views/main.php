@@ -27,7 +27,7 @@
 							<small><em><?php echo $post['name']; ?></em></small>
 						</div>
 						<div class="panel-footer">
-							<a href="?delete=<?php echo $post['id']; ?>">Supprimer ce post</a>
+							<a class="text-danger" href="views/wantToDelete.php?to_delete=<?php echo $post['id']; ?>&content=<?php echo $post['content']; ?>">Supprimer ce post</a>
 						</div>
 					</div>
 				<?php endforeach; ?>
