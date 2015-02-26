@@ -4,7 +4,7 @@ class C_Post {
     private $postsModel = null;
 
     public function __construct() {
-        $this->postsModel = new M_Posts();
+        $this->postsModel = new M_Post();
     }
 
     public function view() {

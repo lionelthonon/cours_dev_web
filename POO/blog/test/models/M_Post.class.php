@@ -1,5 +1,5 @@
 <?php
-class M_Posts extends Model {
+class M_Post extends Model {
     // fonctions relatives à la bdd
     function getPost($id){
         $this->connexion; // Hérité de la classe Model
