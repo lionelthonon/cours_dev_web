@@ -1,22 +1,54 @@
 <?php
-/* --- INCLUDE CONFIGS & MODELS --- */
-include('config/db.php');
-include('models/posts.php');
-
 /* --- SET L'ENCODAGE --- */
 setlocale(LC_TIME, 'fr');
+include('config/db.php');
 
-/* --- CONNEXION A LA BDD AVEC PDO --- */
-try {
-	$connexion = new PDO(DSN, USER, PASSWORD); // Constantes créées dans config/db.php
-	// Set l'encodage
-	$connexion->query('SET CHARACTER SET UTF8');
-	$connexion->query('SET NAMES UTF8');
-	Echo "Connexion à la BDD réussie";
-}catch(PDOException $e){
-	// Gestion de l'erreur (stockée dans $e)
-	die('index.php line 17'.$e->getMessage());
-}
+/* --- include path --- */
+set_include_path('configs;controllers;models;'.get_include_path());
+
+/* --- autoload pour les class --- */
+spl_autoload_register(function($className){
+    include($className.'.class.php'); // Autoload reçoit automatiquement le nom de la classe
+});
+
+/* --- Déclare les routes --- */
+include('config/routes.php');
+// Route par défaut
+$routeParts = explode('/', $routes['default']);
+
+// Variables que l'on utilise pour les routes
+$a = isset($_REQUEST['a'])?$_REQUEST['a']:$routeParts[0];
+$e = isset($_REQUEST['e'])?$_REQUEST['e']:$routeParts[1];
+$route = $a.'/'.$e;
+
+// tester si la route existe
+ if(!in_array($route, $routes)){
+    header('Location: views/404.php'); // L'utilisateur a modifié l'URL d'une manière pas permise
+ }
+
+/* --- Opérations sur les posts --- */
+$post = new Posts();
+
+/* --- Affiche tous les messages dans la page d'accueil --- */
+$posts = $post->getPosts();
+
+/* --- Choix du controller --- */
+$controllerName = "C_".ucfirst($e);
+$controller = new $controllerName;
+$data = call_user_func([$controller, $a]);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* --- Ajoute un message via le formulaire --- */
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -51,9 +83,6 @@ if(isset($_GET['delete'])){
 	$id_to_delete = $_GET['delete'];
 	deletePost($connexion, $id_to_delete);
 };
-
-/* --- Affiche les messages --- */
-$posts = getPosts($connexion);
 
 /* --- INCLUDE VIEWS --- */
 include('views/main.php');
