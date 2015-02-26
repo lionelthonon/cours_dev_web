@@ -1,5 +1,5 @@
 <?php
-/* --- INCLUDE CONFIGS $ MODELS --- */
+/* --- INCLUDE CONFIGS & MODELS --- */
 include('config/db.php');
 include('models/posts.php');
 
