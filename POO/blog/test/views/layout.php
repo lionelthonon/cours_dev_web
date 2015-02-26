@@ -6,6 +6,6 @@
 </head>
 <body>
     <h1>layout.php</h1>
-    <?php include($view); ?>
+    <?php include($data['view']); ?>
 </body>
 </html>

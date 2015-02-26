@@ -21,10 +21,12 @@ $route = $a.'/'.$e;
     die('404'); // L'utilisateur a modifié l'URL d'une manière pas permise
  }
 
-/* --- Créer la vue --- */
+/* --- Choix du controller --- */
 $controllerName = "C_".ucfirst($e);
 $controller = new $controllerName;
 
-$view = $a.'_'.$e.'.php';
+/* --- Créer la variable $data => Contient le résultat des requêtes --- */
 $data = call_user_func([$controller, $a]);
+
+/* --- Choisir la vue --- */
 include('views/layout.php');

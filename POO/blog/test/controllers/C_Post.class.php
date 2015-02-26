@@ -26,7 +26,11 @@ class C_Post extends C_Base {
         // Affecte l'id
         $id = $_GET['id'];
 
-        return $this->postsModel->getPost($id);
+        $data = [];
+
+        $data['data'] = $this->postsModel->getPost($id);
+        $data['view'] = 'view_post.php';
+        return $data;
     }
 
 }
