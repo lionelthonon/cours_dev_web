@@ -1,5 +1,5 @@
 <?php
-class C_Post {
+class C_Post extends C_Base {
 
     private $postsModel = null;
 
