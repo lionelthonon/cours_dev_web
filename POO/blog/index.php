@@ -37,52 +37,5 @@ $controllerName = "C_".ucfirst($e);
 $controller = new $controllerName;
 $data = call_user_func([$controller, $a]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --- Ajoute un message via le formulaire --- */
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-	/* --- Verifie si le formulaire est complet --- */
-
-	// Variable des erreurs
-	$errors = [];
-
-	// Récupère les valeurs du formulaire
-	$author_sign = $_POST['author_sign'];
-	$content = $_POST['content'];
-	$category = $_POST['category'];
-
-	// Vérifie si chaque champ a été remplis
-	if(empty($_POST['author_sign'])){
-		$errors['author_sign'] = true;
-	}
-	if(empty($_POST['content'])){
-		$errors['content'] = true;
-	}
-
-	// Lance la fonction createPost() si il n'y a pas d'erreur
-	if(count($errors) === 0){
-		createPost($connexion, $author_sign, $content, $category);
-	}else{
-		die('Err. : Un des champs du formulaire n\'a pas été remplis');
-	}
-}
-
-/* --- Supprimer un post ---*/
-if(isset($_GET['delete'])){
-	$id_to_delete = $_GET['delete'];
-	deletePost($connexion, $id_to_delete);
-};
-
 /* --- INCLUDE VIEWS --- */
 include('views/main.php');
