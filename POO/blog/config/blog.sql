@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 22 Février 2015 à 18:55
+-- Généré le :  Jeu 05 Mars 2015 à 02:34
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -50,12 +50,13 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
   `content` text NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `author_sign` varchar(200) NOT NULL,
   `id_cat` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
