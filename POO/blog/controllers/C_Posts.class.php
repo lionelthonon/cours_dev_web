@@ -28,12 +28,37 @@ class C_Posts {
 		$data['view'] = 'add_posts.php';
 		
 		// Données du formulaire
-		$data['author_sign'] = $_POST['author_sign'];
-		$data['title'] = $_POST['title'];
-		$data['content'] = $_POST['content'];
-		$data['category'] = $_POST['category'];
+        if(empty($_POST['author_sign'])){
+            $errors = [
+                'author_sign' => true
+            ];
+            die('Vous n\'avez pas spécifié votre nom.');
+        }else{
+             $author_sign = $_POST['author_sign'];
+        }
+
+        if(empty($_POST['title'])){
+            $errors = ['title' => true];
+            die('Vous n\'avez pas specifie de titre pour votre artticle');
+        }else{
+            $title = $_POST['title'];
+        }
+
+        if(empty($_POST['content'])){   
+            $errors = ['content' => true];
+            die('Il faut un contenu pour votre article');
+        }else{
+            $content = $_POST['content'];
+        }
+
+        if($_POST['category'] == "NULL"){
+            $errors = ['category' => true];
+            die('Il faut choisir une categorie pour votre article');
+        }else{
+            $category = $_POST['category'];
+        }
 		
-		$this->post->createPost($data['author_sign'], $data['title'], $data['content'], $data['category']);
+		$this->post->createPost($author_sign, $title, $content, $category);
 		
 		return $data;
 	}
@@ -60,14 +85,46 @@ class C_Posts {
 	
 	public function validUpdate () {
 		$data = [];
+        $errors = array(
+            'author_sign' => false,
+            'title' => false,
+            'content' => false,
+            'category' => false
+        );
+        
 		$data['view'] = "validUpdate_posts.php";
-		
 		$id = $_GET['id'];
-		$author_sign = $_POST['author_sign'];
-		$title = $_POST['title'];
-		$content = $_POST['content'];
-		$category = $_POST['category'];
+        
+        if(empty($_POST['author_sign'])){
+            $errors = [
+                'author_sign' => true
+            ];
+            die('Vous n\'avez pas spécifié votre nom.');
+        }else{
+            $author_sign = $_POST['author_sign'];
+        }
 		
+        if(empty($_POST['title'])){
+            $errors = ['title' => true];
+            die('Vous n\'avez pas specifie de titre pour votre artticle');
+        }else{
+            $title = $_POST['title'];
+        }
+        
+        if(empty($_POST['content'])){   
+            $errors = ['content' => true];
+            die('Il faut un contenu pour votre article');
+        }else{
+            $content = $_POST['content'];
+        }
+        
+        if($_POST['category'] == "NULL"){
+            $errors = ['category' => true];
+            die('Il faut choisir une categorie pour votre article');
+        }else{
+            $category = $_POST['category'];
+        }
+        
 		$this->post->updatePost($id, $author_sign, $title, $content, $category);
 		
 		return $data;
