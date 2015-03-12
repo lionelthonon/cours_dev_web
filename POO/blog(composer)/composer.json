@@ -1,0 +1,17 @@
+{
+    "name": "x/blog(composer)",
+    "description": "An extremely basic blog with PHP",
+    "autoload": {
+        "psr-4": {
+            "controllers\\": "controllers/",
+            "models\\": "models/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lionel Thonon",
+            "email": "lionel.thonon@gmail.com"
+        }
+    ],
+    "require": {}
+}

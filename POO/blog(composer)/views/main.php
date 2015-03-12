@@ -19,7 +19,7 @@
 			<!-- Include vue pour tous les articles -->
 			<?php include($data['view']); ?>
 
-			
+
 			</div>
 		</main>
 	</div><!-- container -->

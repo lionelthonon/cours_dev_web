@@ -1,0 +1,52 @@
+--- notes ---
+L'idée est d'avoir des URLs du type index.php?a=create&e=post
+
+/* --- Variables que l'on va utiliser pour les URLs --- */
+$a = isset($_REQUEST['a'])?$_REQUEST['a']:$routeParts[0]; // voir 'définir la route à suivre'
+$e = isset($_REQUEST['e'])?$_REQUEST['e']:$routeParts[1];
+
+/* --- Variable view pour créer et gérer les vues --- */
+$view = $a.'_'.$e.'.php';
+include('views/layout.php');
+
+/* --- EN HTML --- */
+<body> <!-- page layout -->
+    <?php include($view); ?>
+</body>
+
+<section class="posts"><!-- page spécifique à une url -->
+    <?php foreach($posts as $post): ?>
+    
+    <?php endforeach; ?>
+    <!-- Ce code sera implémenté dans le layout
+</section>
+
+/* --- Les routes --- */
+include(configs/routes.php); // routes afin d'éviter les erreurs dans les URLs
+
+// Fichier routes.php
+<?php
+
+$routes['default'] = 'index/posts';
+$routes['view_posts'] = 'view/posts';
+
+/* --- vérifier si les routes sont définies --- 
+ * Dans index.php
+ */
+ if(in_array($route, $routes)){
+    die('404'); // L'utilisateur a modifié l'URL d'une manière pas permise
+ }
+ 
+ /* --- définir la route à suivre --- */
+ // index.php
+ $routeParts = explode('/', $routes['default']);
+ 
+ /* --- Splitter les contrôleurs --- */
+ // index.php
+ include(controllers/.$e.'.php');
+ call_user_func($a); // appel de la fonction dont le nom est dans $a
+ 
+ // Fichier controllers/posts.php
+ function index(){
+    // afficher les articles
+ }
