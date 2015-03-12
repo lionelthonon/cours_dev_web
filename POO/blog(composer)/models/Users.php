@@ -2,7 +2,7 @@
 
 namespace models;
 
-class M_Users extends Models {
+class Users extends Models {
 
     /* Récupère un user */
     public function getUser($email, $password) {

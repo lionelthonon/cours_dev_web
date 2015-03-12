@@ -5,7 +5,7 @@ namespace controllers;
 class Users {
     private $userModel = null;
     public function __construct() {
-        $this->userModel = new M_Users();
+        $this->userModel = new \models\Users();
     }
 
     public function collect() {
@@ -38,6 +38,16 @@ class Users {
     private function create($email, $password) {
         $this->userModel->createUser($email, $password);
         $this->connect(['email'=>$email]);
+    }
+
+    /* déconnecte l'utilisateur */
+    public function disconnect()
+    {
+        $data = [];
+        $data['view'] = 'index_posts.php';
+        $_SESSION['connected'] = 0;
+
+        return $data;
     }
 
 }

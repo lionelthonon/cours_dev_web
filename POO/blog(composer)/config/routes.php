@@ -48,3 +48,9 @@ $routes['collect'] = 'collect/users';
  * Formulaire de co
  */
 $routes['check'] = 'check/users';
+
+/*
+ * check
+ * Formulaire de co
+ */
+$routes['disconnect'] = 'disconnect/users';

@@ -7,11 +7,17 @@
 </head>
 <body>
 	<header>
-	<?php var_dump($_SESSION); ?>
 		<h1>Mini blog en PHP</h1>
-		<div>
-		    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?a=collect&e=users">Connectez-vous</a>
-		</div>
+		<?php if($_SESSION['connected'] == 0): ?>
+            <div>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?a=collect&e=users">Connectez-vous</a>
+            </div>
+        <?php elseif($_SESSION['connected'] == 1): ?>
+            <div>
+                <p><?php echo $_SESSION['user']; ?></p>
+                <p><a href="<?php echo $_SERVER['PHP_SELF']; ?>?a=disconnect&e=users">Déconnectez-vous</a></p>
+            </div1>
+        <?php endif; ?>
 	</header>
 	<div class="container-fluid">
 		<main>
